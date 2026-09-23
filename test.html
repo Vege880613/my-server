@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<body>
+    <button onclick="add()">添加记录</button>
+    <button onclick="get()">获取记录</button>
+    <div id="result"></div>
+
+    <script>
+        async function add() {
+            await fetch('http://localhost:3000/api/records', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ description: '测试', amount: 100 })
+            });
+            get();
+        }
+
+        async function get() {
+            const res = await fetch('http://localhost:3000/api/records');
+            const data = await res.json();
+            document.getElementById('result').innerText = JSON.stringify(data, null, 2);
+        }
+    </script>
+</body>
+</html>
