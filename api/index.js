@@ -42,6 +42,4 @@ app.delete('/api/records/:id', async (req, res) => {
     await Record.findByIdAndDelete(req.params.id);
     res.json({ success: true });
 });
-app.listen(3000, () => {
-    console.log('服务器运行在 http://localhost:3000');
-});
+module.exports = app;
